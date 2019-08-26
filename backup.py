@@ -1,6 +1,4 @@
 ##
-# Script to copy files and compress them and put them in a separate location
-# Amit Sengupta, Sep 2015, HYD
 # Written in Python 2.7
 ###
 

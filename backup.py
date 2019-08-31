@@ -27,8 +27,8 @@ if __name__ =='__main__':
 	print('Starting execution')
 	
 	#compress to zip
-	source_folder = 'C:\\Users\\Rodolfo Sanches\\Desktop\\Banco de Dados'
-	backups_folder = 'C:\\Users\\Rodolfo Sanches\\Desktop\\backups'
+	source_folder = 'C:\\ControleGerencial\\Banco'
+	backups_folder = 'C:\\Users\\Romildo\\BackupsdoSistema\\Arquivos'
 	target_zip = backups_folder + '\\backup'
 	zipExtension = '.zip'
 	now = time.time()
@@ -42,11 +42,13 @@ if __name__ =='__main__':
 
 	files = sorted(files, reverse=True)
 
-	dateLastFile = datetime.datetime.fromtimestamp(os.path.getctime(files[0]))
+	if len(files) > 0:	
+		dateLastFile = datetime.datetime.fromtimestamp(os.path.getctime(files[0]))
 
 	nowMinusXhours = datetime.datetime.now() - datetime.timedelta(hours = xHoras)
+	
 
-	if dateLastFile <= nowMinusXhours:
+	if len(files) == 0 or dateLastFile <= nowMinusXhours:
 		print("Criando backup")
 		#Cria o ZIP
 		make_zipfile(target_zip + zipExtension, source_folder)	
